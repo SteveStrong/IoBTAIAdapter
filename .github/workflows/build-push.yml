@@ -1,0 +1,47 @@
+on:
+  pull_request:
+    branches:
+      - develop
+    types: [closed]
+
+# on: [push]
+name: ARM/AMD build/push docker container
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout project
+      uses: actions/checkout@v2
+
+    - name: Set up Docker QEMU (Emulator)
+      uses: docker/setup-qemu-action@v1
+  
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: iobtassetsarm login
+      uses: azure/docker-login@v1
+      with:
+        login-server: iobtassetsarm.azurecr.io
+        username: ${{ secrets.AZURE_PRIMARY_RESOURCE_GROUP_CLIENT_ID }}
+        password: ${{ secrets.AZURE_PRIMARY_RESOURCE_GROUP_CLIENT_SECRET }}
+
+    - name: docker build/push
+      run: |
+        docker buildx build . -t iobtassetsarm.azurecr.io/IOBTAIAdapter:v0.0.1 -f txrx.Dockerfile --platform linux/arm64
+        docker push iobtassetsarm.azurecr.io/IOBTAIAdapter:v0.0.1
+
+    - name: iobtassets login
+      uses: azure/docker-login@v1
+      with:
+        login-server: iobtassets.azurecr.io
+        username: ${{ secrets.AZURE_PRIMARY_RESOURCE_GROUP_CLIENT_ID }}
+        password: ${{ secrets.AZURE_PRIMARY_RESOURCE_GROUP_CLIENT_SECRET }}
+
+    - name: docker build/push
+      run: |
+        docker build . -t iobtassets.azurecr.io/IOBTAIAdapter:v0.0.1 -f txrx.Dockerfile
+        docker push iobtassets.azurecr.io/IOBTAIAdapter:v0.0.1     

@@ -1,0 +1,4 @@
+pyserial
+signalrcore
+turfpy==0.0.7
+python-dotenv

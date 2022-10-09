@@ -23,7 +23,6 @@ class Environment:
         self.set_radio_identifier()
         self.set_iobt_base_url()
         self.set_keep_alive_seconds()
-        self.set_radio_device()
 
     def set_radio_identifier(self):
         # See READEME.md for process of how to obtain radio identifiers
@@ -46,16 +45,3 @@ class Environment:
         if (override_keep_alive_seconds is not None):
             self.keep_alive_seconds = int(override_keep_alive_seconds)
 
-    def set_radio_device(self) -> Tuple[str, str]:
-        port = "NO RADIO AVAILABLE"
-        description = ""
-
-        for com_port in list_ports.comports():
-            if (com_port.vid is not None):
-                if self.radio_identifier.find(f"{hex(com_port.vid)}-{hex(com_port.pid)}") >= 0:
-                    port = com_port.device
-                    description = com_port.description
-
-        self.port = port
-        self.description = description
-        return (port, description)

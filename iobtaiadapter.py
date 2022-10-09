@@ -17,7 +17,7 @@ def main():
 
     while True:
         if (hub.isPortOpen()):
-            hub.wait_for_TXRX()
+            #hub.wait_for_TXRX()
             sleep(.1)
         else:
             print(f"port is not open retry in {environment.check_reset_needed} seconds")

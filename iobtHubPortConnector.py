@@ -22,7 +22,7 @@ def IOBTAIAdapter(environment: Environment):
     logger.setLevel(logging.DEBUG)  # set logger level
     consoleHandler = logging.StreamHandler(sys.stdout)
     logger.addHandler(consoleHandler)
-    sensor_extra_text = f'{environment.description} ({environment.port})'
+    sensor_extra_text = 'the extra'
 
     sensor = UDTO_Sensor({
         uniqueGuid: uniqueGuid,
@@ -48,8 +48,6 @@ def IOBTAIAdapter(environment: Environment):
             sensor.active = "False"
             sensor.extra = "Restarting"
             self.report_status()
-            environment.set_radio_device()
-            self.openPort(environment.port)
 
         def RX(self, rx: str):
             try:
@@ -74,7 +72,6 @@ def IOBTAIAdapter(environment: Environment):
 
     iobtHub = IoBTHubPortConnector(environment.iobt_base_url)
     iobtHub.start()
-    iobtHub.openPort(environment.port)
 
     RepeatedTimer(environment.keep_alive_seconds, iobtHub.report_status)
 

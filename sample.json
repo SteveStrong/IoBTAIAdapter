@@ -1,0 +1,93 @@
+{
+    "prediction_uuid": "40da067c-37ff-498c-8f75-36e799c73c21",
+    "prediction_time": "2022-09-29T20:59:00.022477+00:00",
+    "predictions": [
+    {
+    "label": "drone",
+    "confidence": 0.296875,
+    "y_min": 1101,
+    "x_min": 2272,
+    "y_max": 1136,
+    "x_max": 2330
+    },
+    {
+    "label": "drone",
+    "confidence": 0.1484375,
+    "y_min": 30,
+    "x_min": 1310,
+    "y_max": 47,
+    "x_max": 1353
+    },
+    {
+    "label": "drone",
+    "confidence": 0.13671875,
+    "y_min": 11,
+    "x_min": 1881,
+    "y_max": 33,
+    "x_max": 1934
+    },
+    {
+    "label": "drone",
+    "confidence": 0.12890625,
+    "y_min": 40,
+    "x_min": 1260,
+    "y_max": 59,
+    "x_max": 1302
+    }
+    ],
+    "modelname": "models/EfficientDet_Lite0_v1.0_model.tflite",
+    "model_classes": [
+    "bird",
+    "drone",
+    "ufo",
+    "unknown"
+    ],
+    "threshold": 0.1,
+    "input_details": {
+    "name": "serving_default_images:0",
+    "index": 0,
+    "shape": [
+    1,
+    320,
+    320,
+    3
+    ],
+    "shape_signature": [
+    1,
+    320,
+    320,
+    3
+    ],
+    "dtype": "uint8",
+    "quantization": [
+    0.0078125,
+    127
+    ],
+    "quantization_parameters": {
+    "scales": [
+    0.0078125
+    ],
+    "zero_points": [
+    127
+    ],
+    "quantized_dimension": 0
+    },
+    "sparsity_parameters": {}
+    },
+    "images": {
+    "model_input_info": {
+    "Filename": "",
+    "Image Size": [
+    2880,
+    1800
+    ],
+    "Image Height": 1800,
+    "Image Width": 2880,
+    "Image Format": "JPEG",
+    "Image Mode": "RGB",
+    "Image is Animated": false,
+    "Frames in Image": 1
+    }
+    },
+    "success": true
+    }

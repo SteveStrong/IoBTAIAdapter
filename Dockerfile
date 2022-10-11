@@ -22,3 +22,13 @@ ENTRYPOINT ["python3", "iobtaiadapter.py"]
 # sudo docker-compose -f txrx-docker-compose.yml down
 # az login
 # az acr login --name iobtassets
+
+
+##from natiain
+
+# https://tenjin-edge.ngrok.io/docs#/
+
+
+# docker run saicaifactory/tenjin-edge-cv-runner:0.0.1 --url  https://www.hollywoodreporter.com/wp-content/uploads/2014/03/bob_thomas.jpg --ms 10
+
+# https://www.hollywoodreporter.com/wp-content/uploads/2014/03/bob_thomas.jpg --ms 10
